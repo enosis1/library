@@ -1,5 +1,6 @@
 console.log("hello world");
 
+const body = document.querySelector("body");
 const myLibrary = [];
 
 function Book(title, author, pages, isBookRead) {
@@ -39,19 +40,17 @@ function addBookToLibrary() {
   let bookRead = prompt("Have you read the book?", "Yes/No");
   bookRead.toLowerCase();
   bookRead === "yes" ? true : false;
+
   const newBook = new Book(title, author, pages, bookRead);
   myLibrary.push(newBook);
 }
 
-function displayBooks() {}
+function displayBooks() {
+  myLibrary.forEach((book) => {
+    const bookPara = document.createElement("p");
+    bookPara.className = "book";
 
-let myFriends = [
-  {
-    name: "devin",
-    age: 25,
-  },
-  {
-    name: "odelys",
-    age: 25,
-  },
-];
+    bookPara.textContent = book.info();
+    body.appendChild(bookPara);
+  });
+}
