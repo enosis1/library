@@ -4,10 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="script/script.js"></script>
+    <script src="script/script.js" defer></script>
     <title>Library</title>
 </head>
 <body>
-    
+    <div class="header">
+        <h1>Library</h1>
+        <button type="add button">Add a book</button>
+    </div>
+    <div class="div">
+        <div class="book-card">
+            <form action="#">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div>
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author">
+                </div>
+                <div>
+                    <label for="pages">Pages</label>
+                    <input type="number" name="pages" id="pages">
+                </div>
+                <div>
+                    Have you read the book?
+                    <input type="checkbox" name="isBookRead" id="isBookRead">
+                    <label for="isBookRead">Yes</label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 </body>
 </html>
