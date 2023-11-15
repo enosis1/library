@@ -1,41 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="script/script.js" defer></script>
     <title>Library</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <h1>Library</h1>
-        <button type="add button">Add a book</button>
+      <p class="title">Library</p>
+      <div>
+        <button class="button add-button" type="button">Add Book</button>
+      </div>
     </div>
-    <div class="div">
+    <div class="body">
+      <div class="books-container">
         <div class="book-card">
-            <form action="#">
-                <div>
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title">
-                </div>
-                <div>
-                    <label for="author">Author</label>
-                    <input type="text" name="author" id="author">
-                </div>
-                <div>
-                    <label for="pages">Pages</label>
-                    <input type="number" name="pages" id="pages">
-                </div>
-                <div>
-                    Have you read the book?
-                    <input type="checkbox" name="isBookRead" id="isBookRead">
-                    <label for="isBookRead">Yes</label>
-                </div>
-            </form>
+          <div class="book-information">
+            <p class="book-header">Title:</p>
+            <p class="book-title">Test Book</p>
+          </div>
+          <div class="book-information">
+            <p class="book-header">Author:</p>
+            <p class="book-title">Test Author</p>
+          </div>
+          <div class="book-information">
+            <p class="book-header">Pages:</p>
+            <p class="book-title">430 pages</p>
+          </div>
+          <div class="book-information">
+            <label for="isBookRead">Book Read?</label>
+            <input type="checkbox" name="isBookRead" id="isBookRead" />
+          </div>
+          <div class="book-buttons">
+            <button type="button" class="button edit-button">Edit</button>
+            <button type="button" class="button delete-button">Delete</button>
+          </div>
         </div>
+        <div class="book-card">
+          <div class="book-information">
+            <p class="book-header">Title:</p>
+            <p class="book-title">Test Book</p>
+          </div>
+          <div class="book-information">
+            <p class="book-header">Author:</p>
+            <p class="book-title">Test Author</p>
+          </div>
+          <div class="book-information">
+            <p class="book-header">Pages:</p>
+            <p class="book-title">430 pages</p>
+          </div>
+          <div class="book-information">
+            <label for="isBookRead">Book Read?</label>
+            <input type="checkbox" name="isBookRead" id="isBookRead" />
+          </div>
+          <div class="book-buttons">
+            <button type="button" class="button edit-button">Edit</button>
+            <button type="button" class="button delete-button">Delete</button>
+          </div>
+        </div>
+        <div class="book-card">
+          <div class="book-information">
+            <p class="book-header">Title:</p>
+            <p class="book-title">Test Book</p>
+          </div>
+          <div class="book-information">
+            <p class="book-header">Author:</p>
+            <p class="book-title">Test Author</p>
+          </div>
+          <div class="book-information">
+            <p class="book-header">Pages:</p>
+            <p class="book-title">430 pages</p>
+          </div>
+          <div class="book-information">
+            <label for="isBookRead">Book Read?</label>
+            <input type="checkbox" name="isBookRead" id="isBookRead" />
+          </div>
+          <div class="book-buttons">
+            <button type="button" class="button edit-button">Edit</button>
+            <button type="button" class="button delete-button">Delete</button>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-</body>
+  </body>
 </html>
