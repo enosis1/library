@@ -37,7 +37,8 @@ body {
   width: 60%;
 }
 
-.book-card {
+.book-card,
+dialog {
   background-color: #f1f5f9;
   border-radius: 5px;
   padding: 10px;
@@ -59,7 +60,7 @@ body {
   width: fit-content;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   align-self: baseline;
 }
 
@@ -82,4 +83,30 @@ input[type='checkbox'] {
 
 .add-button {
   margin-top: 10px;
+}
+
+form {
+  display: grid;
+  gap: 5px;
+}
+
+dialog {
+  margin: auto;
+  border: 1px solid;
+}
+
+form div {
+  display: flex;
+}
+
+form label {
+  width: 195px;
+  font-size: 1.5rem;
+}
+
+form input {
+  width: 200px;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid black;
 }

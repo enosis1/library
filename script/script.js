@@ -2,6 +2,13 @@ console.log("hello world");
 
 const body = document.querySelector("body");
 const bookContainer = document.querySelector(".book-container");
+const modal = document.querySelector("dialog");
+const addButton = document.querySelector(".addBookButton");
+const closeModalBtn = document.querySelector(".closeModal");
+const formTitle = document.querySelector("#title");
+const formAuthor = document.querySelector("#author");
+const formPages = document.querySelector("#pages");
+const formCheck = document.querySelector("#isBookRead");
 const myLibrary = [];
 
 function Book(title, author, pages, isBookRead) {
@@ -38,11 +45,11 @@ function addBookToLibrary() {
   // Converts string pages to number
   pages = +pages;
 
-  let bookRead = prompt("Have you read the book?", "Yes/No");
-  bookRead.toLowerCase();
-  bookRead === "yes" ? true : false;
+  let isBookRead = prompt("Have you read the book?", "Yes/No");
+  isBookRead.toLowerCase();
+  isBookRead === "yes" ? true : false;
 
-  const newBook = new Book(title, author, pages, bookRead);
+  const newBook = new Book(title, author, pages, isBookRead);
   myLibrary.push(newBook);
 }
 
@@ -95,4 +102,20 @@ function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1, string.length);
 }
 
+function clearForm() {
+  formTitle.value = "";
+  formAuthor.value = "";
+  formPages.value = "";
+  formCheck.value = "";
+}
+
 displayBooks();
+
+addButton.addEventListener("click", () => {
+  clearForm();
+  modal.showModal();
+});
+
+closeModalBtn.addEventListener("click", () => {
+  modal.close();
+});
