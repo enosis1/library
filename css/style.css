@@ -86,7 +86,8 @@ input[type="checkbox"] {
 }
 
 form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 5px;
 }
 
@@ -109,4 +110,10 @@ form input {
   font-size: 1.5rem;
   border-radius: 8px;
   border: 1px solid black;
+}
+
+.btns {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
 }
