@@ -1,6 +1,7 @@
 console.log("hello world");
 
 const body = document.querySelector("body");
+const bookContainer = document.querySelector(".book-container");
 const myLibrary = [];
 
 function Book(title, author, pages, isBookRead) {
@@ -47,10 +48,41 @@ function addBookToLibrary() {
 
 function displayBooks() {
   myLibrary.forEach((book) => {
-    const bookPara = document.createElement("p");
-    bookPara.className = "book";
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book-card");
 
-    bookPara.textContent = book.info();
-    body.appendChild(bookPara);
+    for (let property in book) {
+      if (Object.hasOwn(book, property)) {
+        const bookInformation = document.createElement("div");
+        bookInformation.classList.add("book-information");
+
+        const bookLabel = document.createElement("p");
+
+        const bookInfo = document.createElement("p");
+
+        bookLabel.classList.add("book-label");
+        if (property === "isBookRead") {
+          bookLabel.textContent = `Book Read?:`;
+        } else {
+          bookLabel.textContent = `${capitalize(property)}:`;
+        }
+
+        bookInfo.classList.add("book-info");
+        bookInfo.textContent = `${book[property]}`;
+
+        bookInformation.appendChild(bookLabel);
+        bookInformation.appendChild(bookInfo);
+
+        bookCard.appendChild(bookInformation);
+      }
+    }
+
+    bookContainer.appendChild(bookCard);
   });
 }
+
+function capitalize(string) {
+  return string[0].toUpperCase() + string.slice(1, string.length);
+}
+
+displayBooks();
