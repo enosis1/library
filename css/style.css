@@ -64,7 +64,8 @@ input[type='checkbox'] {
 }
 
 .book-buttons {
-  padding-top: 10px;
+  display: flex;
+  gap: 5px;
 }
 
 .button {
