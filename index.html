@@ -41,12 +41,16 @@
         </div>
         <div>
           <label for="isBookRead">Book Read?</label>
-          <input type="checkbox" name="isBookRead" id="isBookRead" />
+          <select id="isBookRead">
+            <option value=""></option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
         </div>
 
       <div class="btns">
-        <button type="submit" class="button">Submit Book</button>
-        <button class='button closeModal' type="button">Close</button>
+        <button type="submit" class="button formSubmitButton">Submit Book</button>
+        <button class='button modalCloseButton' type="button">Close</button>
       </div>
       </form>
     </dialog>
