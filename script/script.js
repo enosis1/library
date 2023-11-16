@@ -50,15 +50,20 @@ function displayBooks() {
   myLibrary.forEach((book) => {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
+    const bookButtons = document.createElement("div");
+    const editButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
 
     for (let property in book) {
       if (Object.hasOwn(book, property)) {
         const bookInformation = document.createElement("div");
-        bookInformation.classList.add("book-information");
-
         const bookLabel = document.createElement("p");
-
         const bookInfo = document.createElement("p");
+
+        bookInformation.classList.add("book-information");
+        editButton.classList.add("button");
+        deleteButton.classList.add("button");
+        bookButtons.classList.add("book-buttons");
 
         bookLabel.classList.add("book-label");
         if (property === "isBookRead") {
@@ -70,10 +75,15 @@ function displayBooks() {
         bookInfo.classList.add("book-info");
         bookInfo.textContent = `${book[property]}`;
 
+        editButton.textContent = "Edit";
+        deleteButton.textContent = "Delete";
+
         bookInformation.appendChild(bookLabel);
         bookInformation.appendChild(bookInfo);
-
         bookCard.appendChild(bookInformation);
+        bookButtons.appendChild(editButton);
+        bookButtons.appendChild(deleteButton);
+        bookCard.appendChild(bookButtons);
       }
     }
 
