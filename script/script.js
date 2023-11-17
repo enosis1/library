@@ -139,6 +139,7 @@ function displayBook(book) {
       bookButtons.appendChild(deleteButton);
       bookCard.appendChild(bookButtons);
       bookCard.dataset.index = dataValue;
+      book.index = dataValue;
     }
   }
 
@@ -176,6 +177,7 @@ modalSubmitButton.addEventListener("click", () => {
 const deleteButton = document.querySelectorAll(".delete-button");
 const bookCards = document.querySelectorAll(".book-card");
 Array.from(deleteButton);
+const bookCards = document.querySelectorAll(".book-card");
 let bookCardsArray = Array.from(bookCards);
 
 deleteButton.forEach((btn) => {
@@ -186,3 +188,15 @@ deleteButton.forEach((btn) => {
     console.log(myLibrary);
   });
 });
+// btn.addEventListener("click", (event) => {
+//   let index = event.target.parentElement.parentElement.dataset.index;
+//   index = +index;
+//   console.log(index);
+//   event.target.parentElement.parentElement.remove();
+
+//   for (let position in myLibrary) {
+//     if (myLibrary[position].index === index) {
+//       myLibrary.splice(position, 1);
+//     }
+//   }
+// });
