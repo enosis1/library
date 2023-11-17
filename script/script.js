@@ -51,15 +51,27 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
 }
 
-let dataValue = 0;
-
 function displayBooks() {
   myLibrary.forEach((book) => {
+    let dataValue = Math.random();
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
     const bookButtons = document.createElement("div");
     const editButton = document.createElement("button");
     const deleteButton = document.createElement("button");
+
+    deleteButton.addEventListener("click", (event) => {
+      let index = event.target.parentElement.parentElement.dataset.index;
+      index = +index;
+      console.log(index);
+      event.target.parentElement.parentElement.remove();
+
+      for (let position in myLibrary) {
+        if (myLibrary[position].index === index) {
+          myLibrary.splice(position, 1);
+        }
+      }
+    });
 
     for (let property in book) {
       if (Object.hasOwn(book, property)) {
@@ -93,11 +105,11 @@ function displayBooks() {
         bookButtons.appendChild(deleteButton);
         bookCard.appendChild(bookButtons);
         bookCard.dataset.index = dataValue;
+        book.index = dataValue;
       }
     }
 
     bookContainer.appendChild(bookCard);
-    dataValue++;
   });
 }
 
@@ -108,8 +120,22 @@ function displayBook(book) {
   const editButton = document.createElement("button");
   const deleteButton = document.createElement("button");
 
+  deleteButton.addEventListener("click", (event) => {
+    let index = event.target.parentElement.parentElement.dataset.index;
+    index = +index;
+    console.log(index);
+    event.target.parentElement.parentElement.remove();
+
+    for (let position in myLibrary) {
+      if (myLibrary[position].index === index) {
+        myLibrary.splice(position, 1);
+      }
+    }
+  });
+
   for (let property in book) {
     if (Object.hasOwn(book, property)) {
+      let dataValue = Math.random();
       const bookInformation = document.createElement("div");
       const bookLabel = document.createElement("p");
       const bookInfo = document.createElement("p");
@@ -138,6 +164,8 @@ function displayBook(book) {
       bookButtons.appendChild(editButton);
       bookButtons.appendChild(deleteButton);
       bookCard.appendChild(bookButtons);
+      bookCard.dataset.index = dataValue;
+      book.index = dataValue;
     }
   }
 
@@ -153,10 +181,6 @@ function clearForm() {
   formAuthor.value = "";
   formPages.value = "";
   formCheck.value = "";
-}
-
-function deleteBook(event) {
-  
 }
 
 displayBooks();
@@ -175,14 +199,18 @@ modalSubmitButton.addEventListener("click", () => {
   displayBook(myLibrary[myLibrary.length - 1]);
 });
 
-const deleteButton = document.querySelectorAll(".delete-button");
-const bookCards = document.querySelectorAll('.book-card')
-Array.from(deleteButton);
+const bookCards = document.querySelectorAll(".book-card");
 let bookCardsArray = Array.from(bookCards);
 
-deleteButton.forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    let index = (event.target.parentElement.parentElement.dataset.index);
-    bookCardsArray[index].remove()
-  });
-});
+// btn.addEventListener("click", (event) => {
+//   let index = event.target.parentElement.parentElement.dataset.index;
+//   index = +index;
+//   console.log(index);
+//   event.target.parentElement.parentElement.remove();
+
+//   for (let position in myLibrary) {
+//     if (myLibrary[position].index === index) {
+//       myLibrary.splice(position, 1);
+//     }
+//   }
+// });
