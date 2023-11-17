@@ -138,10 +138,12 @@ function displayBook(book) {
       bookButtons.appendChild(editButton);
       bookButtons.appendChild(deleteButton);
       bookCard.appendChild(bookButtons);
+      bookCard.dataset.index = dataValue;
     }
   }
 
   bookContainer.appendChild(bookCard);
+  dataValue++;
 }
 
 function capitalize(string) {
@@ -153,10 +155,6 @@ function clearForm() {
   formAuthor.value = "";
   formPages.value = "";
   formCheck.value = "";
-}
-
-function deleteBook(event) {
-  
 }
 
 displayBooks();
@@ -176,13 +174,15 @@ modalSubmitButton.addEventListener("click", () => {
 });
 
 const deleteButton = document.querySelectorAll(".delete-button");
-const bookCards = document.querySelectorAll('.book-card')
+const bookCards = document.querySelectorAll(".book-card");
 Array.from(deleteButton);
 let bookCardsArray = Array.from(bookCards);
 
 deleteButton.forEach((btn) => {
   btn.addEventListener("click", (event) => {
-    let index = (event.target.parentElement.parentElement.dataset.index);
-    bookCardsArray[index].remove()
+    let index = event.target.parentElement.parentElement.dataset.index;
+    bookCardsArray[index].remove();
+    myLibrary.splice(index, 1);
+    console.log(myLibrary);
   });
 });
