@@ -9,10 +9,6 @@ body {
   height: 100vh;
 }
 
-.grid-container {
-  display: grid;
-}
-
 .header {
   text-align: center;
 }
@@ -32,7 +28,7 @@ body {
 
 .book-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 10px;
   width: 60%;
 }
@@ -44,29 +40,11 @@ dialog {
   padding: 10px;
 }
 
-.book-information {
+.book-card {
   display: flex;
-  align-items: center;
   gap: 10px;
-}
-
-.book-label,
-.book-info {
-  width: 100px;
-  height: 35px;
-}
-
-.book-info {
-  width: fit-content;
-}
-
-input[type="checkbox"] {
-  align-self: baseline;
-}
-
-.book-buttons {
-  display: flex;
-  gap: 5px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .button {
@@ -75,20 +53,24 @@ input[type="checkbox"] {
   border-radius: 10px;
   background-color: #cbd5e1;
   cursor: pointer;
+  align-self: stretch;
+}
+
+.button.delete-button {
+  background-color: #f87171;
+  align-self: stretch;
 }
 
 .button:active {
-  background-color: #a6afba;
+  background-color: #c5cbd3;
+}
+
+.button.delete-button:active {
+  background-color: #f35959;
 }
 
 .add-button {
   margin-top: 10px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 }
 
 dialog {
@@ -96,24 +78,22 @@ dialog {
   border: 1px solid;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 form div {
   display: flex;
+  gap: 1px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-form label {
-  width: 195px;
-  font-size: 1.5rem;
-}
-
-form input {
-  width: 200px;
-  font-size: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid black;
-}
-
-.btns {
-  display: flex;
-  gap: 5px;
-  justify-content: flex-end;
+input,
+label {
+  align-self: baseline;
+  font-size: 1.2rem;
 }

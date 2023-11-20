@@ -22,7 +22,18 @@
         <div class="add-button">
           <button class="addBookButton button" type="button">Add Book</button>
         </div>
-        <div class="book-container"></div>
+        <div class="book-container">
+          <div class="book-card">
+            <p class="book-title">Book</p>
+            <p class="book-author">Author</p>
+            <p class="book-pages">Pages</p>
+            <div class="book-read">
+              <label for="isBookRead">Have you read the book?</label>
+              <input type="checkbox" name="isBookRead" id="isBookRead" />
+            </div>
+            <button type="button" class="delete-button button">Delete</button>
+          </div>
+        </div>
       </div>
     </div>
     <dialog>
@@ -48,10 +59,12 @@
           </select>
         </div>
 
-      <div class="btns">
-        <button type="submit" class="button formSubmitButton">Submit Book</button>
-        <button class='button modalCloseButton' type="button">Close</button>
-      </div>
+        <div class="btns">
+          <button type="submit" class="button formSubmitButton">
+            Submit Book
+          </button>
+          <button class="button modalCloseButton" type="button">Close</button>
+        </div>
       </form>
     </dialog>
   </body>
