@@ -22,37 +22,27 @@
         <div class="add-button">
           <button class="addBookButton button" type="button">Add Book</button>
         </div>
-        <div class="book-container">
-          <div class="book-card">
-            <p class="book-title">Book</p>
-            <p class="book-author">Author</p>
-            <p class="book-pages">Pages</p>
-            <div class="book-read">
-              <label for="isBookRead">Have you read the book?</label>
-              <input type="checkbox" name="isBookRead" id="isBookRead" />
-            </div>
-            <button type="button" class="delete-button button">Delete</button>
-          </div>
-        </div>
+        <div class="book-container"></div>
       </div>
     </div>
     <dialog>
       <form method="dialog">
         <div>
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" />
+          <label class="modalLabel" for="title">Title</label>
+          <input type="text" name="title" id="title" required />
         </div>
         <div>
-          <label for="author">Author</label>
-          <input type="text" name="author" id="author" />
+          <label class="modalLabel" for="author">Author</label>
+          <input type="text" name="author" id="author" required />
         </div>
         <div>
-          <label for="pages">Pages</label>
-          <input type="number" name="pages" id="pages" />
+          <label class="modalLabel" for="pages">Pages</label>
+          <input type="number" name="pages" id="pages" required/ max="9999"
+          min="0">
         </div>
         <div>
-          <label for="isBookRead">Book Read?</label>
-          <select id="isBookRead">
+          <label class="modalLabel" for="modalSelect">Book Read?</label>
+          <select id="modalSelect">
             <option value=""></option>
             <option value="true">Yes</option>
             <option value="false">No</option>
@@ -63,7 +53,7 @@
           <button type="submit" class="button formSubmitButton">
             Submit Book
           </button>
-          <button class="button modalCloseButton" type="button">Close</button>
+          <button class="button formCloseButton" type="button">Close</button>
         </div>
       </form>
     </dialog>
