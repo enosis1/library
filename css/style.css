@@ -1,6 +1,12 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  --red: #ee9090;
+  --green: #90ee90;
+  --grey: #cbd5e1;
+  --red-active: #ff9a9a; 
+  --green-active: #84f884;
+  --grey-active: #c5cbd3;
 }
 
 body {
@@ -51,22 +57,22 @@ dialog {
   padding: 8px 20px;
   border: 0px solid;
   border-radius: 10px;
-  background-color: #cbd5e1;
+  background-color: var(--grey);
   cursor: pointer;
   align-self: stretch;
 }
 
 .button.delete-button {
-  background-color: #f87171;
+  background-color: var(--red);
   align-self: stretch;
 }
 
 .button:active {
-  background-color: #c5cbd3;
+  background-color: var(--grey-active);
 }
 
 .button.delete-button:active {
-  background-color: #f35959;
+  background-color: var(--red-active);
 }
 
 .add-button {
@@ -75,25 +81,34 @@ dialog {
 
 dialog {
   margin: auto;
-  border: 1px solid;
+  border: 0px solid;
 }
 
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  padding: 10px;
 }
 
 form div {
   display: flex;
-  gap: 1px;
+  gap: 3px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 input,
-label {
+.modalLabel {
   align-self: baseline;
   font-size: 1.2rem;
+}
+
+.formSubmitButton {
+  background: var(--green);
+}
+
+.formSubmitButton:active {
+  background-color: var(--green-active);
 }
