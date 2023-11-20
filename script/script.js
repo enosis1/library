@@ -74,6 +74,7 @@ function displayBooks() {
     bookDeleteBtn.textContent = "Delete";
 
     // Add dataset number;
+    bookCard.dataset.number = book.randomNumber;
 
     bookDeleteBtn.addEventListener("click", (event) => {
       event.target.parentElement.remove();
@@ -87,9 +88,24 @@ function displayBooks() {
       myLibrary.splice(indexIwillRemove, 1);
     });
 
-    bookReadBtn.addEventListener("click", () => {
+    bookReadBtn.addEventListener("click", (event) => {
       let readStatus = bookRead.textContent;
       readStatus.includes("true") ? console.log("true") : console.log("false");
+      let numberImLookingFor = event.target.parentElement.dataset.number;
+      console.log(numberImLookingFor);
+      numberImLookingFor = +numberImLookingFor;
+
+      let indexIWillUpdate = myLibrary.findIndex(
+        (book) => book.randomNumber === numberImLookingFor
+      );
+
+      if (readStatus.includes("true")) {
+        myLibrary[indexIWillUpdate].isBookRead = false;
+        bookRead.textContent = "Book read?: false";
+      } else {
+        myLibrary[indexIWillUpdate].isBookRead = true;
+        bookRead.textContent = "Book read?: true";
+      }
     });
 
     for (let property in book) {
@@ -131,6 +147,9 @@ function displayBook(book) {
   const bookPages = document.createElement("p");
   bookPages.classList.add("book-pages");
 
+  const bookRead = document.createElement("p");
+  bookRead.classList.add("book-read");
+
   const bookReadBtn = document.createElement("button");
   bookReadBtn.setAttribute("type", "button");
   bookReadBtn.classList.add("button", "read-button");
@@ -141,6 +160,9 @@ function displayBook(book) {
   bookDeleteBtn.classList.add("button", "delete-button");
   bookDeleteBtn.textContent = "Delete";
 
+  // Add dataset number;
+  bookCard.dataset.number = book.randomNumber;
+
   bookDeleteBtn.addEventListener("click", (event) => {
     event.target.parentElement.remove();
     let numberImLookingFor = event.target.parentElement.dataset.number;
@@ -149,7 +171,24 @@ function displayBook(book) {
     let indexIwillRemove = myLibrary.findIndex(
       (book) => book.randomNumber === numberImLookingFor
     );
+
     myLibrary.splice(indexIwillRemove, 1);
+  });
+
+  bookReadBtn.addEventListener("click", (event) => {
+    let readStatus = bookRead.textContent;
+    readStatus.includes("true") ? console.log("true") : console.log("false");
+    let numberImLookingFor = event.target.parentElement.dataset.number;
+    console.log(numberImLookingFor);
+    numberImLookingFor = +numberImLookingFor;
+
+    let indexIWillUpdate = myLibrary.findIndex(
+      (book) => book.randomNumber === numberImLookingFor
+    );
+
+    readStatus.includes("true")
+      ? (myLibrary[indexIWillUpdate].isBookRead = false)
+      : (myLibrary[indexIWillUpdate].isBookRead = true);
   });
 
   for (let property in book) {
@@ -164,9 +203,7 @@ function displayBook(book) {
         bookPages.textContent = book[property];
       }
       if (property === "isBookRead") {
-        if (book[property] === true) {
-        } else {
-        }
+        bookRead.textContent = `Book read?: ${book[property]}`;
       }
     }
   }
@@ -174,6 +211,7 @@ function displayBook(book) {
   bookCard.appendChild(bookTitle);
   bookCard.appendChild(bookAuthor);
   bookCard.appendChild(bookPages);
+  bookCard.appendChild(bookRead);
   bookCard.appendChild(bookReadBtn);
   bookCard.appendChild(bookDeleteBtn);
 }
@@ -196,6 +234,7 @@ function clearForm() {
 
 addButton.addEventListener("click", () => {
   modal.showModal();
+  clearForm();
 });
 
 modalSubmitBtn.addEventListener("click", () => {
