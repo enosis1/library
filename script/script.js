@@ -186,9 +186,13 @@ function displayBook(book) {
       (book) => book.randomNumber === numberImLookingFor
     );
 
-    readStatus.includes("true")
-      ? (myLibrary[indexIWillUpdate].isBookRead = false)
-      : (myLibrary[indexIWillUpdate].isBookRead = true);
+    if (readStatus.includes("true")) {
+      myLibrary[indexIWillUpdate].isBookRead = false;
+      bookRead.textContent = "Book read?: false";
+    } else {
+      myLibrary[indexIWillUpdate].isBookRead = true;
+      bookRead.textContent = "Book read?: true";
+    }
   });
 
   for (let property in book) {
