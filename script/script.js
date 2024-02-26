@@ -44,6 +44,9 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
 }
 
+
+// this is a change i would like to see in vim
+
 function displayBooks() {
   myLibrary.forEach((book) => {
     const bookCard = document.createElement("div");
