@@ -1,5 +1,3 @@
-console.log("hello world");
-
 const myLibrary = [];
 const modal = document.querySelector("dialog");
 const addButton = document.querySelector(".addBookButton");
@@ -82,7 +80,7 @@ function displayBooks() {
       numberImLookingFor = +numberImLookingFor;
       console.log(event.target.parentElement.dataset.number);
       let indexIwillRemove = myLibrary.findIndex(
-        (book) => book.randomNumber === numberImLookingFor
+        (book) => book.randomNumber === numberImLookingFor,
       );
 
       myLibrary.splice(indexIwillRemove, 1);
@@ -96,7 +94,7 @@ function displayBooks() {
       numberImLookingFor = +numberImLookingFor;
 
       let indexIWillUpdate = myLibrary.findIndex(
-        (book) => book.randomNumber === numberImLookingFor
+        (book) => book.randomNumber === numberImLookingFor,
       );
 
       if (readStatus.includes("true")) {
@@ -169,7 +167,7 @@ function displayBook(book) {
     numberImLookingFor = +numberImLookingFor;
     console.log(event.target.parentElement.dataset.number);
     let indexIwillRemove = myLibrary.findIndex(
-      (book) => book.randomNumber === numberImLookingFor
+      (book) => book.randomNumber === numberImLookingFor,
     );
 
     myLibrary.splice(indexIwillRemove, 1);
@@ -183,7 +181,7 @@ function displayBook(book) {
     numberImLookingFor = +numberImLookingFor;
 
     let indexIWillUpdate = myLibrary.findIndex(
-      (book) => book.randomNumber === numberImLookingFor
+      (book) => book.randomNumber === numberImLookingFor,
     );
 
     if (readStatus.includes("true")) {
