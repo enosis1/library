@@ -13,7 +13,7 @@ function Book(title, author, pages, isBookRead) {
   this.randomNumber = Math.random();
 }
 
-Book.prototype.info = function () {
+Book.prototype.info = function() {
   if (this.isBookRead === true) {
     return `${this.title} by ${this.author}, ${this.pages} pages, book read.`;
   }
@@ -43,7 +43,6 @@ function addBookToLibrary() {
   const newBook = new Book(title, author, pages, isBookRead);
   myLibrary.push(newBook);
 }
-
 
 // this is a change i would like to see in vim
 
