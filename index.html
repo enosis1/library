@@ -1,61 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <script src="script/script.js" defer></script>
     <title>Library</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="grid-container">
-      <div class="header">
-        <p class="header-text">Library</p>
-      </div>
-      <div class="main">
-        <div class="add-button">
-          <button class="addBookButton button" type="button">Add Book</button>
+        <div class="header">
+            <p class="header-text">Library</p>
         </div>
-        <div class="book-container"></div>
-      </div>
+        <div class="main">
+            <div class="add-button">
+                <button class="addBookButton button" type="button">Add Book</button>
+            </div>
+            <div class="book-container"></div>
+        </div>
     </div>
     <dialog>
-      <form method="dialog">
-        <div>
-          <label class="modalLabel" for="title">Title</label>
-          <input type="text" name="title" id="title" required />
-        </div>
-        <div>
-          <label class="modalLabel" for="author">Author</label>
-          <input type="text" name="author" id="author" required />
-        </div>
-        <div>
-          <label class="modalLabel" for="pages">Pages</label>
-          <input type="number" name="pages" id="pages" required/ max="9999"
-          min="0">
-        </div>
-        <div>
-          <label class="modalLabel" for="modalSelect">Book Read?</label>
-          <select id="modalSelect">
-            <option value=""></option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
+        <form method="dialog">
+            <div>
+                <label class="modalLabel" for="title">Title</label>
+                <input type="text" name="title" id="title" required />
+            </div>
+            <div>
+                <label class="modalLabel" for="author">Author</label>
+                <input type="text" name="author" id="author" required />
+            </div>
+            <div>
+                <label class="modalLabel" for="pages">Pages</label>
+                <input type="number" name="pages" id="pages" required/ max="9999" min="0">
+            </div>
+            <div>
+                <label class="modalLabel" for="modalSelect">Book Read?</label>
+                <select id="modalSelect">
+                    <option value=""></option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
 
-        <div class="btns">
-          <button type="submit" class="button formSubmitButton">
-            Submit Book
-          </button>
-          <button class="button formCloseButton" type="button">Close</button>
-        </div>
-      </form>
+            <div class="btns">
+                <button type="submit" class="button formSubmitButton">
+                    Submit Book
+                </button>
+                <button class="button formCloseButton" type="button">Close</button>
+            </div>
+        </form>
     </dialog>
-  </body>
+</body>
+
 </html>
