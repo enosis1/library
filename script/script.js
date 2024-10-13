@@ -26,6 +26,7 @@ let greenEggsAndHam = new Book("Green Eggs and Ham", "Dr. Seuss", 32, true);
 myLibrary.push(greenEggsAndHam);
 let tuesdaysWith = new Book("Tuesdays with Morrie", "Mitch Albom", 144, true);
 myLibrary.push(tuesdaysWith);
+let testBook = new Book("This is a title", "This is an author", 598, false);
 
 function addBookToLibrary() {
     const formTitle = document.querySelector("#title");
@@ -43,8 +44,6 @@ function addBookToLibrary() {
     const newBook = new Book(title, author, pages, isBookRead);
     myLibrary.push(newBook);
 }
-
-// this is a change i would like to see in vim
 
 function displayBooks() {
     myLibrary.forEach((book) => {
