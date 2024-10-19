@@ -68,7 +68,7 @@ function displayBooks() {
         const bookReadBtn = document.createElement("button");
         bookReadBtn.setAttribute("type", "button");
         bookReadBtn.classList.add("button", "read-button");
-        bookReadBtn.textContent = "Read?";
+        bookReadBtn.textContent = "Toggle Book Read Status";
 
         const bookDeleteBtn = document.createElement("button");
         bookDeleteBtn.setAttribute("type", "button");
@@ -77,24 +77,28 @@ function displayBooks() {
 
         // Add dataset bookId;
         bookCard.dataset.bookId = book.bookId;
-
         bookDeleteBtn.addEventListener("click", deleteBook);
-
         bookReadBtn.addEventListener("click", toggleBookRead);
 
         for (let property in book) {
             if (Object.hasOwn(book, property)) {
                 if (property === "title") {
                     bookTitle.textContent = book[property];
+                    continue;
                 }
                 if (property === "author") {
                     bookAuthor.textContent = book[property];
+                    continue;
                 }
                 if (property === "pages") {
                     bookPages.textContent = book[property];
+                    continue;
                 }
                 if (property === "isBookRead") {
-                    bookRead.textContent = `Book read?: ${book[property]}`;
+                    book.isBookRead === true
+                        ? (bookRead.textContent = "You have read this book")
+                        : (bookRead.textContent = "You have not read this book");
+                    continue;
                 }
             }
         }
@@ -127,7 +131,7 @@ function displayBook(book) {
     const bookReadBtn = document.createElement("button");
     bookReadBtn.setAttribute("type", "button");
     bookReadBtn.classList.add("button", "read-button");
-    bookReadBtn.textContent = "Read?";
+    bookReadBtn.textContent = "Have you read this book?";
 
     const bookDeleteBtn = document.createElement("button");
     bookDeleteBtn.setAttribute("type", "button");
@@ -137,27 +141,9 @@ function displayBook(book) {
     // Add dataset.bookId;
     bookCard.dataset.bookId = book.bookId;
 
-    bookDeleteBtn.addEventListener("click");
+    bookDeleteBtn.addEventListener("click", deleteBook);
 
-    bookReadBtn.addEventListener("click", (event) => {
-        let readStatus = bookRead.textContent;
-        readStatus.includes("true") ? console.log("true") : console.log("false");
-        let numberImLookingFor = event.target.parentElement.dataset.bookId;
-        console.log(numberImLookingFor);
-        numberImLookingFor = +numberImLookingFor;
-
-        let indexIWillUpdate = library.findIndex(
-            (book) => book.bookId === numberImLookingFor,
-        );
-
-        if (readStatus.includes("true")) {
-            library[indexIWillUpdate].isBookRead = false;
-            bookRead.textContent = "Book read?: false";
-        } else {
-            library[indexIWillUpdate].isBookRead = true;
-            bookRead.textContent = "Book read?: true";
-        }
-    });
+    bookReadBtn.addEventListener("click", toggleBookRead);
 
     for (let property in book) {
         if (Object.hasOwn(book, property)) {
@@ -171,7 +157,9 @@ function displayBook(book) {
                 bookPages.textContent = book[property];
             }
             if (property === "isBookRead") {
-                bookRead.textContent = `Book read?: ${book[property]}`;
+                book.isBookRead === true
+                    ? (bookRead.textContent = "You have read this book")
+                    : (bookRead.textContent = "You have not read this book");
             }
         }
     }
@@ -213,8 +201,6 @@ function deleteBook(event) {
 }
 
 function toggleBookRead(event) {
-    let readStatus = this.previousElementSibling.textContent;
-    readStatus.includes("true") ? console.log("true") : console.log("false");
     let currentBookId = event.target.parentElement.dataset.bookId;
     console.log(currentBookId);
     currentBookId = +currentBookId;
@@ -223,12 +209,12 @@ function toggleBookRead(event) {
         (book) => book.bookId === currentBookId,
     );
 
-    if (readStatus.includes("true")) {
+    if (library[currentBookIndex].isBookRead === true) {
         library[currentBookIndex].isBookRead = false;
-        this.previousElementSibling.textContent = "Book read?: false";
+        this.previousElementSibling.textContent = "You have not read this book";
     } else {
         library[currentBookIndex].isBookRead = true;
-        this.previousElementSibling.textContent = "Book read?: true";
+        this.previousElementSibling.textContent = "You have read this book";
     }
 }
 
