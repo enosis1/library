@@ -69,7 +69,7 @@ function displayBook(book) {
   const bookReadBtn = document.createElement("button");
   bookReadBtn.setAttribute("type", "button");
   bookReadBtn.classList.add("button", "read-button");
-  bookReadBtn.textContent = "Toggle Book Read Status";
+  bookReadBtn.textContent = "Book Status";
 
   const bookDeleteBtn = document.createElement("button");
   bookDeleteBtn.setAttribute("type", "button");
@@ -80,8 +80,19 @@ function displayBook(book) {
   bookCard.dataset.bookId = book.bookId;
 
   // Add event listeners for book actions
-  bookReadBtn.addEventListener("click", toggleBookRead);
-  bookDeleteBtn.addEventListener("click", deleteBook);
+  bookContainer.addEventListener("click", function (event) {
+    const target = event.target;
+
+    // Check if the clicked element is the 'read-button'
+    if (target.classList.contains("read-button")) {
+      toggleBookRead(event);
+    }
+
+    // Check if the clicked element is the 'delete-button'
+    else if (target.classList.contains("delete-button")) {
+      deleteBook(event);
+    }
+  });
 
   // Append elements to card
   bookCard.appendChild(bookTitle);
