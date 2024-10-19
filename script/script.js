@@ -80,25 +80,7 @@ function displayBooks() {
 
         bookDeleteBtn.addEventListener("click", deleteBook);
 
-        bookReadBtn.addEventListener("click", (event) => {
-            let readStatus = bookRead.textContent;
-            readStatus.includes("true") ? console.log("true") : console.log("false");
-            let numberImLookingFor = event.target.parentElement.dataset.number;
-            console.log(numberImLookingFor);
-            numberImLookingFor = +numberImLookingFor;
-
-            let indexIWillUpdate = library.findIndex(
-                (book) => book.bookId === numberImLookingFor,
-            );
-
-            if (readStatus.includes("true")) {
-                library[indexIWillUpdate].isBookRead = false;
-                bookRead.textContent = "Book read?: false";
-            } else {
-                library[indexIWillUpdate].isBookRead = true;
-                bookRead.textContent = "Book read?: true";
-            }
-        });
+        bookReadBtn.addEventListener("click", toggleBookRead);
 
         for (let property in book) {
             if (Object.hasOwn(book, property)) {
@@ -228,6 +210,26 @@ function deleteBook(event) {
     );
 
     library.splice(indexIwillRemove, 1);
+}
+
+function toggleBookRead(event) {
+    let readStatus = this.previousElementSibling.textContent;
+    readStatus.includes("true") ? console.log("true") : console.log("false");
+    let currentBookId = event.target.parentElement.dataset.number;
+    console.log(currentBookId);
+    currentBookId = +currentBookId;
+
+    let currentBookIndex = library.findIndex(
+        (book) => book.bookId === currentBookId,
+    );
+
+    if (readStatus.includes("true")) {
+        library[currentBookIndex].isBookRead = false;
+        this.previousElementSibling.textContent = "Book read?: false";
+    } else {
+        library[currentBookIndex].isBookRead = true;
+        this.previousElementSibling.textContent = "Book read?: true";
+    }
 }
 
 addButton.addEventListener("click", () => {
