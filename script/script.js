@@ -75,8 +75,8 @@ function displayBooks() {
         bookDeleteBtn.classList.add("button", "delete-button");
         bookDeleteBtn.textContent = "Delete";
 
-        // Add dataset number;
-        bookCard.dataset.number = book.bookId;
+        // Add dataset bookId;
+        bookCard.dataset.bookId = book.bookId;
 
         bookDeleteBtn.addEventListener("click", deleteBook);
 
@@ -134,15 +134,15 @@ function displayBook(book) {
     bookDeleteBtn.classList.add("button", "delete-button");
     bookDeleteBtn.textContent = "Delete";
 
-    // Add dataset number;
-    bookCard.dataset.number = book.bookId;
+    // Add dataset.bookId;
+    bookCard.dataset.bookId = book.bookId;
 
     bookDeleteBtn.addEventListener("click");
 
     bookReadBtn.addEventListener("click", (event) => {
         let readStatus = bookRead.textContent;
         readStatus.includes("true") ? console.log("true") : console.log("false");
-        let numberImLookingFor = event.target.parentElement.dataset.number;
+        let numberImLookingFor = event.target.parentElement.dataset.bookId;
         console.log(numberImLookingFor);
         numberImLookingFor = +numberImLookingFor;
 
@@ -202,9 +202,9 @@ function clearForm() {
 
 function deleteBook(event) {
     event.target.parentElement.remove();
-    let currentBookId = event.target.parentElement.dataset.number;
+    let currentBookId = event.target.parentElement.dataset.bookId;
     currentBookId = +currentBookId;
-    console.log(event.target.parentElement.dataset.number);
+    console.log(event.target.parentElement.dataset.bookId);
     let indexIwillRemove = library.findIndex(
         (book) => book.currentBookId === currentBookId,
     );
@@ -215,7 +215,7 @@ function deleteBook(event) {
 function toggleBookRead(event) {
     let readStatus = this.previousElementSibling.textContent;
     readStatus.includes("true") ? console.log("true") : console.log("false");
-    let currentBookId = event.target.parentElement.dataset.number;
+    let currentBookId = event.target.parentElement.dataset.bookId;
     console.log(currentBookId);
     currentBookId = +currentBookId;
 
