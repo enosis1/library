@@ -14,10 +14,9 @@ function Book(title, author, pages, isBookRead) {
 }
 
 Book.prototype.info = function () {
-  if (this.isBookRead === true) {
-    return `${this.title} by ${this.author}, ${this.pages} pages, book read.`;
-  }
-  return `${this.title} by ${this.author}, ${this.pages} pages, not read yet.`;
+  return this.isBookRead
+    ? `${this.title} by ${this.author}, ${this.pages} pages, book read.`
+    : `${this.title} by ${this.author}, ${this.pages} pages, not read yet.`;
 };
 
 function addBookToLibrary() {
@@ -64,8 +63,8 @@ function displayBook(book) {
   const bookRead = document.createElement("p");
   bookRead.classList.add("book-read");
   bookRead.textContent = book.isBookRead
-    ? (bookRead.textContent = "You have read this book")
-    : (bookRead.textContent = "You have not read this book");
+    ? "You have read this book"
+    : "You have not read this book";
 
   const bookReadBtn = document.createElement("button");
   bookReadBtn.setAttribute("type", "button");
@@ -77,23 +76,12 @@ function displayBook(book) {
   bookDeleteBtn.classList.add("button", "delete-button");
   bookDeleteBtn.textContent = "Delete";
 
-  // Add dataset bookId;
+  // Add dataset bookId
   bookCard.dataset.bookId = book.bookId;
 
-  // Add event listeners
-  bookContainer.addEventListener("click", function (event) {
-    // Check if the clicked element is the 'read-button'
-    if (event.target.classList.contains("read-button")) {
-      toggleBookRead(event);
-    }
-
-    // Check if the clicked element is the 'delete-button'
-    else if (event.target.classList.contains("delete-button")) {
-      deleteBook(event);
-    }
-  });
-  bookDeleteBtn.addEventListener("click", deleteBook);
+  // Add event listeners for book actions
   bookReadBtn.addEventListener("click", toggleBookRead);
+  bookDeleteBtn.addEventListener("click", deleteBook);
 
   // Append elements to card
   bookCard.appendChild(bookTitle);
@@ -105,10 +93,6 @@ function displayBook(book) {
 
   // Append card to container
   bookContainer.appendChild(bookCard);
-}
-
-function capitalize(string) {
-  return string[0].toUpperCase() + string.slice(1, string.length);
 }
 
 function clearForm() {
@@ -125,30 +109,31 @@ function clearForm() {
 
 function deleteBook(event) {
   const bookCard = event.target.parentElement;
-  const bookId = bookCard.dataset.bookid;
+  const bookId = +bookCard.dataset.bookId;
 
-  const bookIndex = library.findIndex((book) => (book.bookId = bookId));
-  if (bookIndex > 1) {
-    library.splice(bookId, 1); // Remove the book from the library array
+  const bookIndex = library.findIndex((book) => book.bookId === bookId);
+  if (bookIndex > -1) {
+    library.splice(bookIndex, 1); // Remove the book from the library array
     bookCard.remove(); // Remove the card from the DOM
   }
 }
 
 function toggleBookRead(event) {
-  let currentBookId = event.target.parentElement.dataset.bookId;
-  console.log(currentBookId);
-  currentBookId = +currentBookId;
+  const bookCard = event.target.parentElement;
+  const bookId = +bookCard.dataset.bookId;
 
-  let currentBookIndex = library.findIndex(
-    (book) => book.bookId === currentBookId,
-  );
+  const currentBookIndex = library.findIndex((book) => book.bookId === bookId);
+  if (currentBookIndex !== -1) {
+    const currentBook = library[currentBookIndex];
 
-  if (library[currentBookIndex].isBookRead === true) {
-    library[currentBookIndex].isBookRead = false;
-    this.previousElementSibling.textContent = "You have not read this book";
-  } else {
-    library[currentBookIndex].isBookRead = true;
-    this.previousElementSibling.textContent = "You have read this book";
+    // Toggle the read status of the book
+    currentBook.isBookRead = !currentBook.isBookRead;
+
+    // Update the DOM to reflect the change
+    const readStatus = bookCard.querySelector(".book-read");
+    readStatus.textContent = currentBook.isBookRead
+      ? "You have read this book"
+      : "You have not read this book";
   }
 }
 
