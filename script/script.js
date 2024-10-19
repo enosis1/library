@@ -59,7 +59,7 @@ function displayBook(book) {
 
   const bookPages = document.createElement("p");
   bookPages.classList.add("book-pages");
-  bookPages.textContent = `${book.pages} pages`
+  bookPages.textContent = `${book.pages} pages`;
 
   const bookRead = document.createElement("p");
   bookRead.classList.add("book-read");
@@ -81,6 +81,17 @@ function displayBook(book) {
   bookCard.dataset.bookId = book.bookId;
 
   // Add event listeners
+  bookContainer.addEventListener("click", function (event) {
+    // Check if the clicked element is the 'read-button'
+    if (event.target.classList.contains("read-button")) {
+      toggleBookRead(event);
+    }
+
+    // Check if the clicked element is the 'delete-button'
+    else if (event.target.classList.contains("delete-button")) {
+      deleteBook(event);
+    }
+  });
   bookDeleteBtn.addEventListener("click", deleteBook);
   bookReadBtn.addEventListener("click", toggleBookRead);
 
@@ -113,15 +124,14 @@ function clearForm() {
 }
 
 function deleteBook(event) {
-  event.target.parentElement.remove();
-  let currentBookId = event.target.parentElement.dataset.bookId;
-  currentBookId = +currentBookId;
-  console.log(event.target.parentElement.dataset.bookId);
-  let indexIwillRemove = library.findIndex(
-    (book) => book.currentBookId === currentBookId,
-  );
+  const bookCard = event.target.parentElement;
+  const bookId = bookCard.dataset.bookid;
 
-  library.splice(indexIwillRemove, 1);
+  const bookIndex = library.findIndex((book) => (book.bookId = bookId));
+  if (bookIndex > 1) {
+    library.splice(bookId, 1); // Remove the book from the library array
+    bookCard.remove(); // Remove the card from the DOM
+  }
 }
 
 function toggleBookRead(event) {
