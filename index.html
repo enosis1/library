@@ -15,11 +15,11 @@
 <body>
     <div class="grid-container">
         <div class="header">
-            <p class="header-text">Library</p>
+            <p class="header-text">Book Library</p>
         </div>
         <div class="main">
             <div class="add-button">
-                <button class="addBookButton button" type="button">Add Book</button>
+                <button class="addBookButton button" type="button">Add a Book</button>
             </div>
             <div class="book-container"></div>
         </div>
@@ -27,19 +27,19 @@
     <dialog>
         <form method="dialog">
             <div>
-                <label class="modalLabel" for="title">Title</label>
+                <label class="modalLabel" for="title">Title*</label>
                 <input type="text" name="title" id="title" required />
             </div>
             <div>
-                <label class="modalLabel" for="author">Author</label>
+                <label class="modalLabel" for="author">Author*</label>
                 <input type="text" name="author" id="author" required />
             </div>
             <div>
-                <label class="modalLabel" for="pages">Pages</label>
+                <label class="modalLabel" for="pages">Pages*</label>
                 <input type="number" name="pages" id="pages" required/ max="9999" min="0">
             </div>
             <div>
-                <label class="modalLabel" for="modalSelect">Book Read?</label>
+                <label class="modalLabel" for="modalSelect">Have you read the book?</label>
                 <select id="modalSelect">
                     <option value=""></option>
                     <option value="true">Yes</option>
@@ -49,9 +49,9 @@
 
             <div class="btns">
                 <button type="submit" class="button formSubmitButton">
-                    Submit Book
+                    Add Book
                 </button>
-                <button class="button formCloseButton" type="button">Close</button>
+                <button class="button formCloseButton" type="button">Cancel</button>
             </div>
         </form>
     </dialog>
