@@ -79,21 +79,6 @@ function displayBook(book) {
   // Add dataset bookId
   bookCard.dataset.bookId = book.bookId;
 
-  // Add event listeners for book actions
-  bookContainer.addEventListener("click", function (event) {
-    const target = event.target;
-
-    // Check if the clicked element is the 'read-button'
-    if (target.classList.contains("read-button")) {
-      toggleBookRead(event);
-    }
-
-    // Check if the clicked element is the 'delete-button'
-    else if (target.classList.contains("delete-button")) {
-      deleteBook(event);
-    }
-  });
-
   // Append elements to card
   bookCard.appendChild(bookTitle);
   bookCard.appendChild(bookAuthor);
@@ -107,15 +92,15 @@ function displayBook(book) {
 }
 
 function clearForm() {
-    const formTitle = document.querySelector("#title");
-    const formAuthor = document.querySelector("#author");
-    const formPages = document.querySelector("#pages");
-    const formBookRead = document.querySelector("#modalSelect");
+  const formTitle = document.querySelector("#title");
+  const formAuthor = document.querySelector("#author");
+  const formPages = document.querySelector("#pages");
+  const formBookRead = document.querySelector("#modalSelect");
 
-    formTitle.value = "";
-    formAuthor.value = "";
-    formPages.value = "";
-    formBookRead.value = "";
+  formTitle.value = "";
+  formAuthor.value = "";
+  formPages.value = "";
+  formBookRead.value = "";
 }
 
 function deleteBook(event) {
@@ -129,8 +114,19 @@ function deleteBook(event) {
   }
 }
 
+bookContainer.addEventListener("click", (event) => {
+  const target = event.target;
+
+  // Check if the clicked element is the read-button
+  if (target.classList.contains("read-button")) {
+    toggleBookRead(event);
+  } else if (target.classList.contains("delete-button")) {
+    deleteBook(event);
+  }
+});
+
 function toggleBookRead(event) {
-  const bookCard = event.target.parentElement;
+  const bookCard = event.target.closest(".book-card");
   const bookId = +bookCard.dataset.bookId;
 
   const currentBookIndex = library.findIndex((book) => book.bookId === bookId);
@@ -158,6 +154,6 @@ modalSubmitBtn.addEventListener("click", () => {
 });
 
 modalCloseBtn.addEventListener("click", () => {
-    clearForm();
-    modal.close();
+  clearForm();
+  modal.close();
 });
